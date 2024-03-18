@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+
+model Package {
+  id Int @id @default(autoincrement())
+  name String
+  price Decimal
+  description String
+  photos String //probably do a model to
+  quotations QuotationPackage[]
+  userId Int
+  user User     @relation(fields: [userId], references: [id])
+}
+
+model Quotation {
+  id Int @id @default(autoincrement())
+  name String
+  email String
+  location String
+  system String
+  packages QuotationPackage[]
+  userId Int
+  user User     @relation(fields: [userId], references: [id])
+}
+
+
+model QuotationPackage {
+  id Int @id @default(autoincrement())
+  quotationId Int
+  packageId Int
+  quotation Quotation @relation(fields: [packageId], references: [id], map: "QuotationIdFK")
+  package Package @relation(fields: [packageId], references: [id], map: "PackageIdFK")
+
+}
+
+
+
+model User {
+  id Int @id @default(autoincrement())
+  name String
+  email String @unique
+  password String
+  color String
+  logo String
+  packages Package[]
+  quotations Quotation[]
+
+}
