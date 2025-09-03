@@ -1,59 +1,69 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-generator client {
-  provider = "prisma-client-js"
-}
-
 datasource db {
-  provider = "mysql"
+  provider = "postgres"
   url      = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
-
-model Package {
-  id Int @id @default(autoincrement())
-  name String
-  price Decimal
-  description String
-  photos String //probably do a model to
-  quotations QuotationPackage[]
-  userId Int
-  user User     @relation(fields: [userId], references: [id])
-}
-
-model Quotation {
-  id Int @id @default(autoincrement())
-  name String
-  email String
-  location String
-  system String
-  packages QuotationPackage[]
-  userId Int
-  user User     @relation(fields: [userId], references: [id])
-}
-
-
-model QuotationPackage {
-  id Int @id @default(autoincrement())
-  quotationId Int
-  packageId Int
-  quotation Quotation @relation(fields: [packageId], references: [id], map: "QuotationIdFK")
-  package Package @relation(fields: [packageId], references: [id], map: "PackageIdFK")
-
+generator client {
+  provider = "prisma-client-js"
 }
 
 
 
-model User {
+model Client {
   id Int @id @default(autoincrement())
-  name String
   email String @unique
   password String
-  color String
-  logo String
-  packages Package[]
-  quotations Quotation[]
 
+  //color String
+  //logo String
+  //packages Package[]
+  leads Lead[]
+  createdAt DateTime   @default(now())
 }
+
+model Lead {
+  id Int @id @default(autoincrement())
+
+  name String
+  email     String?  @unique
+  phone     String?
+  location String
+
+  //quote
+  //system String
+  //packages QuotationPackage[]
+
+  clientId Int
+  client Client     @relation(fields: [clientId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@index([clientId])
+}
+
+
+// model Package {
+//   id Int @id @default(autoincrement())
+//   name String
+//   price Decimal
+//   description String
+//   photos String //probably do a model to
+//   quotations QuotationPackage[]
+//   userId Int
+//   user User     @relation(fields: [userId], references: [id])
+// }
+
+
+
+
+// model QuotationPackage {
+//   id Int @id @default(autoincrement())
+//   quotationId Int
+//   packageId Int
+//   quotation Quotation @relation(fields: [packageId], references: [id], map: "QuotationIdFK")
+//   package Package @relation(fields: [packageId], references: [id], map: "PackageIdFK")
+
+// }

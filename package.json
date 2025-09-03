@@ -1,33 +1,36 @@
 {
-  "name": "solar-quotation",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "node server.mjs",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@prisma/client": "^5.8.0",
-    "cors": "^2.8.5",
-    "express": "^4.18.3",
-    "next": "^14.0.4",
-    "react": "^18",
-    "react-dom": "^18"
-  },
-  "devDependencies": {
-    "@types/cors": "^2.8.17",
-    "@types/express": "^4.17.21",
-    "@types/node": "^20.11.16",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "autoprefixer": "^10.0.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.0.4",
-    "postcss": "^8",
-    "prisma": "^5.8.1",
-    "tailwindcss": "^3.3.0",
-    "typescript": "^5.3.3"
-  }
+    "name": "solar-quotation",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "node server.mjs",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@prisma/client": "^5.8.0",
+        "bcryptjs": "^3.0.2",
+        "cors": "^2.8.5",
+        "express": "^4.18.3",
+        "jsonwebtoken": "^9.0.2",
+        "next": "^14.0.4",
+        "react": "^18",
+        "react-dom": "^18"
+    },
+    "devDependencies": {
+        "@types/cors": "^2.8.17",
+        "@types/express": "^4.17.21",
+        "@types/jsonwebtoken": "^9.0.10",
+        "@types/node": "^20.11.16",
+        "@types/react": "^18",
+        "@types/react-dom": "^18",
+        "autoprefixer": "^10.0.1",
+        "eslint": "^8",
+        "eslint-config-next": "14.0.4",
+        "postcss": "^8",
+        "prisma": "^5.8.1",
+        "tailwindcss": "^3.3.0",
+        "typescript": "^5.3.3"
+    }
 }
