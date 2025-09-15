@@ -5,14 +5,14 @@ const community = "RE";
 const startYear = 2020;
 const endYear = 2024;
 
-async function fetchNasa(lat: number, lon: number) {
-    console.log(lat, lon);
+async function fetchNasa(lat: number, lng: number) {
+    console.log(lat, lng);
     const url =
         `https://power.larc.nasa.gov/api/temporal/monthly/point` +
         `?parameters=${parameters.join(",")}` +
         `&community=${community}` +
-        `&latitude=${lat}` +
-        `&longitude=${lon}` +
+        `&latitude=${lat.toString()}` +
+        `&longitude=${lng.toString()}` +
         `&start=${startYear}` +
         `&end=${endYear}` +
         `&format=JSON`;
@@ -27,8 +27,8 @@ async function fetchNasa(lat: number, lon: number) {
     return await response.json();
 }
 
-export async function getIrradiance(lat: number, lon: number) {
-    const data = await fetchNasa(lat, lon);
+export async function getIrradiance(lat: number, lng: number) {
+    const data = await fetchNasa(lat, lng);
     console.log(data);
 
     const solarData = data.properties.parameter.ALLSKY_SFC_SW_DWN;
