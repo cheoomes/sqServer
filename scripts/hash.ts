@@ -1,4 +1,5 @@
 const bcrypt = require("bcryptjs");
+const { randomBytes } = require("crypto");
 
 async function hashPassword() {
     const password = "1234"; // input
@@ -6,4 +7,8 @@ async function hashPassword() {
     console.log(hashed);
 }
 
-hashPassword();
+async function genAapiKey() {
+    console.log(`client_${randomBytes(16).toString("hex")}`);
+}
+
+genAapiKey();
