@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
+import * as cookie from "cookie";
 
 const prisma = new PrismaClient();
 
@@ -26,6 +27,17 @@ export default async function handler(
     const token = jwt.sign({ id: client.id }, process.env.JWT_SECRET!, {
         expiresIn: "7d",
     });
-    console.log(token);
-    return res.status(200).json({ token });
+
+    res.setHeader(
+        "Set-Cookie",
+        cookie.serialize("auth", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "strict",
+            path: "/",
+            maxAge: 60 * 60 * 24 * 7, // 7 days
+        })
+    );
+
+    return res.status(200).json({ success: true });
 }

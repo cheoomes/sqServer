@@ -30,7 +30,7 @@ model Lead {
   id Int @id @default(autoincrement())
 
   name String
-  email     String  @unique
+  email     String
   phone     String?
   location String
   quote Float
@@ -47,6 +47,7 @@ model Lead {
 
 
   @@index([clientId])
+  @@unique([clientId, email])
 }
 
 

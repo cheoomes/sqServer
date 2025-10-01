@@ -1,5 +1,7 @@
 "use client";
+import router from "next/router";
 import React, { useState } from "react";
+import jwt from "jsonwebtoken";
 
 function LoginPage() {
     const [email, setEmail] = useState("");
@@ -10,21 +12,20 @@ function LoginPage() {
         e.preventDefault(); // <-- prevent page reload
         setError("");
 
+        console.log();
         try {
             const res = await fetch("/api/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, password }),
             });
-            console.log(res);
+
             const data = await res.json();
 
             if (res.ok) {
-                // login successful
-                localStorage.setItem("token", data.token); // store JWT
-                //router.push("/dashboard"); // redirect to dashboard
+                //localStorage.setItem("token", data.token); // store JWT
+                router.push("/home");
             } else {
-                // login failed
                 setError(data.message || "Login failed");
             }
         } catch (err) {
