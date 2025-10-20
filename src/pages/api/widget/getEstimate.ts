@@ -1,4 +1,4 @@
-import { getIrradiance } from "../services/irradiance";
+import { getIrradiance } from "../../services/irradiance";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 // annually / (local peak sun hours * 365) -> kw system

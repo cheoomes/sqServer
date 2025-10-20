@@ -18,8 +18,17 @@ model Client {
   email String @unique
   password String
 
-  //color String
-  //logo String
+  logoUrl String @default("")
+
+  //defualt update
+  backgroundColor String @default("")
+  progresColor String @default("")
+  progresShadowColor String @default("")
+  textColor String @default("")
+  LightTextColor String @default("")
+  showAvgLine Boolean @default(true)
+
+
   //packages Package[]
   apiKey String @unique @default("123")
   leads Lead[]

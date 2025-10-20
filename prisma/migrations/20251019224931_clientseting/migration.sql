@@ -1,0 +1,8 @@
+-- AlterTable
+ALTER TABLE "Client" ADD COLUMN     "LightText" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "backgroundColor" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "logUrl" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "progresColor" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "progresShadow" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "showAverage" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "textColor" TEXT NOT NULL DEFAULT '';

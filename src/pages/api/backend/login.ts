@@ -1,11 +1,9 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "../../lib/prisma";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 import * as cookie from "cookie";
-
-const prisma = new PrismaClient();
 
 export default async function handler(
     req: NextApiRequest,

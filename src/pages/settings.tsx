@@ -16,8 +16,14 @@ function Settings() {
         <div>
             settings
             <p>
-                color scheme (background, secondary, progress ...), logo, area
-                (of map)
+                , logo, area (of map) -------- color scheme (background,
+                progressbar - (same as..), progress - buttons, accent?) text -
+                (light text) avg - on of bold black
+            </p>
+            <p>
+                would you like to pitch an (estimate) price immediatly? if so
+                please contact me to let me know how this could be calculated
+                and I will get it done
             </p>
         </div>
     );
