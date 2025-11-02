@@ -9,7 +9,7 @@ export default function Home() {
 
     async function checkUser() {
         try {
-            const res = await fetch("/api/authentication", {
+            const res = await fetch("/api/backend/getAuthentication", {
                 method: "GET",
                 credentials: "include", // ensures cookies are sent
             });
@@ -27,9 +27,12 @@ export default function Home() {
 
     async function getLeads(clientId: Number) {
         try {
-            const res = await fetch(`/api/getLeads?clientId=${clientId}`, {
-                method: "GET",
-            });
+            const res = await fetch(
+                `/api/backend/getLeads?clientId=${clientId}`,
+                {
+                    method: "GET",
+                }
+            );
 
             if (!res.ok) {
                 throw new Error("Failed to fetch leads");

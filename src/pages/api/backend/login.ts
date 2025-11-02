@@ -1,4 +1,4 @@
-import { prisma } from "../../lib/prisma";
+import { prisma } from "../../../lib/prisma";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { NextApiRequest, NextApiResponse } from "next";
@@ -21,7 +21,7 @@ export default async function handler(
         return res.status(401).json({ message: "Wrong password" });
     }
 
-    //proof of login token
+    //sets authentication.
     const token = jwt.sign({ id: client.id }, process.env.JWT_SECRET!, {
         expiresIn: "7d",
     });

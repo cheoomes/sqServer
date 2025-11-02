@@ -18,7 +18,7 @@ model Client {
   email String @unique
   password String
 
-  logoUrl String @default("")
+  logo Bytes?
 
   //defualt update
   backgroundColor String @default("")

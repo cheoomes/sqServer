@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../lib/prisma";
+import { validateApiKey } from "@/pages/services/validateApiKey";
 
 //into db
 
@@ -30,17 +31,18 @@ export default async function handler(
                 apiKey,
             } = req.body;
 
-            if (!apiKey) {
-                return res.status(400).json({ error: "Missing API key" });
-            }
-            const client = await prisma.client.findUnique({
-                where: { apiKey },
-            });
+            const client = await validateApiKey(apiKey);
+            // if (!apiKey) {
+            //     return res.status(400).json({ error: "Missing API key" });
+            // }
+            // const client = await prisma.client.findUnique({
+            //     where: { apiKey },
+            // });
 
-            if (!client) {
-                return res.status(403).json({ error: "Invalid API key" });
-            }
-            console.log(client.id);
+            // if (!client) {
+            //     return res.status(403).json({ error: "Invalid API key" });
+            // }
+            // console.log(client.id);
 
             const newLead = await prisma.lead.create({
                 data: {
