@@ -10,6 +10,14 @@
             "name": "Launch Chrome against localhost",
             "url": "http://localhost:3000",
             "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "Next.js: Chrome Debug",
+            "url": "http://localhost:3000/settings",
+            "webRoot": "${workspaceFolder}",
+            "sourceMaps": true
         }
     ]
 }

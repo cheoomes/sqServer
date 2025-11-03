@@ -3,9 +3,19 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "../media/Settings.module.css";
 
+interface Settings {
+    logo: Buffer | null;
+    backgroundColor: string;
+    progresColor: string;
+    progresShadowColor: string;
+    textColor: string;
+    LightTextColor: string;
+    showAvgLine: boolean;
+}
+
 function Settings() {
-    const [settings, setSettings] = useState({
-        logo: "",
+    const [settings, setSettings] = useState<Settings>({
+        logo: null,
         backgroundColor: "#ffffff",
         progresColor: "#000000",
         progresShadowColor: "#cccccc",
@@ -53,10 +63,27 @@ function Settings() {
         if (!file) return;
 
         const reader = new FileReader();
+
         reader.onloadend = () => {
-            //setLogo(reader.result as string);
+            const url = reader.result as string;
+
+            // If the logo includes a data URL prefix, remove it
+            let logoBytes = null;
+            if (url?.startsWith("data:")) {
+                const base64 = url.split(",")[1]; // strip "data:image/png;base64,"
+                logoBytes = Buffer.from(base64, "base64");
+            }
+
+            setSettings((prev) => ({
+                ...prev,
+                logo: logoBytes,
+            }));
         };
         reader.readAsDataURL(file);
+    };
+
+    const bytesToString = (bytes: Buffer) => {
+        return Buffer.from(bytes).toString("base64");
     };
 
     async function handleSave() {
@@ -94,10 +121,12 @@ function Settings() {
                         accept="image/*"
                         onChange={handleLogoChange}
                     />
-                    {/* {logo && (
+                    {settings.logo && (
                         <div className={styles.previewWrapper}>
                             <Image
-                                src={logo}
+                                src={`data:image/png;base64,${bytesToString(
+                                    settings.logo
+                                )}`}
                                 alt="Logo preview"
                                 width={150}
                                 height={150}
@@ -105,7 +134,7 @@ function Settings() {
                                 style={{ objectFit: "contain" }}
                             />
                         </div>
-                    )} */}
+                    )}
                 </div>
 
                 <div className={styles.field}>

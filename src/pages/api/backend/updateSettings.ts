@@ -20,7 +20,7 @@ export default async function handler(
         const settings = req.body;
 
         console.log(settings);
-        console.log(settings.backgroundColor);
+        console.log(settings.logo);
 
         const u = await prisma.client.update({
             where: { id: user.id },
