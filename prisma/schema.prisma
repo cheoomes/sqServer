@@ -18,7 +18,7 @@ model Client {
   email String @unique
   password String
 
-  logo Bytes?
+  logo String?
 
   //defualt update
   backgroundColor String @default("")
@@ -28,6 +28,8 @@ model Client {
   LightTextColor String @default("")
   showAvgLine Boolean @default(true)
 
+  //Google Sheets integration
+  googleSheetId String?
 
   //packages Package[]
   apiKey String @unique @default("123")

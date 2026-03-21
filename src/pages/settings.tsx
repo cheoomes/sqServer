@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "../media/Settings.module.css";
 
 interface Settings {
-    logo: Buffer | null;
+    logo: string;
     backgroundColor: string;
     progresColor: string;
     progresShadowColor: string;
@@ -15,7 +15,7 @@ interface Settings {
 
 function Settings() {
     const [settings, setSettings] = useState<Settings>({
-        logo: null,
+        logo: "",
         backgroundColor: "#ffffff",
         progresColor: "#000000",
         progresShadowColor: "#cccccc",
@@ -65,18 +65,11 @@ function Settings() {
         const reader = new FileReader();
 
         reader.onloadend = () => {
-            const url = reader.result as string;
-
-            // If the logo includes a data URL prefix, remove it
-            let logoBytes = null;
-            if (url?.startsWith("data:")) {
-                const base64 = url.split(",")[1]; // strip "data:image/png;base64,"
-                logoBytes = Buffer.from(base64, "base64");
-            }
+            const img = reader.result as string;
 
             setSettings((prev) => ({
                 ...prev,
-                logo: logoBytes,
+                logo: img,
             }));
         };
         reader.readAsDataURL(file);
@@ -124,9 +117,7 @@ function Settings() {
                     {settings.logo && (
                         <div className={styles.previewWrapper}>
                             <Image
-                                src={`data:image/png;base64,${bytesToString(
-                                    settings.logo
-                                )}`}
+                                src={settings.logo}
                                 alt="Logo preview"
                                 width={150}
                                 height={150}

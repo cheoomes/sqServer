@@ -1,12 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../lib/prisma";
 import { validateApiKey } from "@/pages/services/validateApiKey";
+import { appendLeadToSheet } from "@/pages/services/googleSheets";
 
 //into db
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse
+    res: NextApiResponse,
 ) {
     // CORS headers
     res.setHeader("Access-Control-Allow-Origin", "http://localhost:3001");
@@ -28,8 +29,8 @@ export default async function handler(
                 quote,
                 energyConsumption,
                 bill,
-                apiKey,
             } = req.body;
+            const apiKey = req.headers["x-api-key"] as string;
 
             const client = await validateApiKey(apiKey);
             // if (!apiKey) {
@@ -58,6 +59,20 @@ export default async function handler(
             });
 
             console.log(newLead);
+
+            if (client.googleSheetId) {
+                appendLeadToSheet(client.googleSheetId, newLead)
+                    .then(() => {
+                        console.log("✅ Lead synced to Google Sheet");
+                    })
+                    .catch((sheetError) => {
+                        console.error(
+                            "⚠️ Failed to sync to Google Sheet:",
+                            sheetError,
+                        );
+                        //does not fail request
+                    });
+            }
 
             return res.status(200).json({ success: true, data: newLead });
         } catch (error) {

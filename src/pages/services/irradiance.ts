@@ -21,7 +21,7 @@ async function fetchNasa(lat: number, lng: number) {
 
     if (!response.ok) {
         throw new Error(
-            `NASA API error: ${response.status} ${response.statusText}`
+            `NASA API error: ${response.status} ${response.statusText}`,
         );
     }
     return await response.json();
