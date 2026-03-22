@@ -1,10 +1,10 @@
 import { prisma } from "@/lib/prisma";
-import { verifyAuth } from "@/pages/services/authentication";
+import { verifyAuth } from "@/lib/authentication";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse
+    res: NextApiResponse,
 ) {
     if (req.method !== "PUT") {
         return res.status(405).json({ message: "Method not allowed" });

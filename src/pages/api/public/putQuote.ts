@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../lib/prisma";
-import { validateApiKey } from "@/pages/services/validateApiKey";
-import { appendLeadToSheet } from "@/pages/services/googleSheets";
+import { validateApiKey } from "@/lib/validateApiKey";
+import { appendLeadToSheet } from "@/lib/googleSheets";
 
 //into db
 
