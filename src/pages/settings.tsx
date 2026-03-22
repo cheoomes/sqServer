@@ -1,7 +1,7 @@
 import router from "next/router";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import styles from "../media/Settings.module.css";
+import styles from "../media/settings.module.css";
 
 interface Settings {
     logo: string;
