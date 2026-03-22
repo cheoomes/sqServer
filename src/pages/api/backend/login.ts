@@ -1,4 +1,4 @@
-import { prisma } from "../../../lib/prisma";
+import { prisma } from "@/lib/prisma";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { NextApiRequest, NextApiResponse } from "next";
@@ -7,7 +7,7 @@ import * as cookie from "cookie";
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse
+    res: NextApiResponse,
 ) {
     const { email, password } = req.body;
 
@@ -34,7 +34,7 @@ export default async function handler(
             sameSite: "strict",
             path: "/",
             maxAge: 60 * 60 * 24 * 7, // 7 days
-        })
+        }),
     );
 
     return res.status(200).json({ success: true });

@@ -1,4 +1,4 @@
-import { getIrradiance } from "../../services/irradiance";
+import { getIrradiance } from "@/lib/irradiance";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 // annually / (local peak sun hours * 365) -> kw system
@@ -9,7 +9,7 @@ const performanceRatio = 0.8;
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse
+    res: NextApiResponse,
 ) {
     // CORS headers
     res.setHeader("Access-Control-Allow-Origin", "http://localhost:3001");

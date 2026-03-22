@@ -1,7 +1,7 @@
-import { verifyAuth } from "@/lib/authentication";
+import verifyAuth from "@/lib/authentication";
 import { error } from "console";
 import { NextApiRequest, NextApiResponse } from "next";
-import { prisma } from "../../../lib/prisma";
+import { prisma } from "@/lib/prisma";
 
 //allow cred's on request
 export default async function handler(
