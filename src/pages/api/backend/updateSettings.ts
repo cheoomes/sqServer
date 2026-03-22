@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { verifyAuth } from "@/lib/authentication";
+import verifyAuth from "@/lib/authentication";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
