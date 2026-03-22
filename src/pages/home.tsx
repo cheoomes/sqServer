@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import router from "next/router";
 import { error } from "console";
-import LeadsTable from "./components/leadsTable";
+import LeadsTable from "@/lib/component/leadsTable";
 
 export default function Home() {
     const [userId, setUserId] = useState<Number | null>(null);
@@ -31,7 +31,7 @@ export default function Home() {
                 `/api/backend/getLeads?clientId=${clientId}`,
                 {
                     method: "GET",
-                }
+                },
             );
 
             if (!res.ok) {

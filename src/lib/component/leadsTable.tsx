@@ -28,7 +28,7 @@ export default function LeadsTable({ leads }: LeadsTableProps) {
             Object.values(lead)
                 .join(" ")
                 .toLowerCase()
-                .includes(search.toLowerCase())
+                .includes(search.toLowerCase()),
         )
         .sort((a, b) => {
             const valA = a[sortField];
