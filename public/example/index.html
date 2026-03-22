@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sunnies – Home</title>
+
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            body {
+                background-color: #f0f2f5;
+            }
+
+            header {
+                background: linear-gradient(135deg, #1a472a 0%, #2d6a4f 100%);
+                width: 100%;
+                color: #ffffff;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 2rem;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            }
+
+            .logo-section {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .logo {
+                width: 50px;
+                height: 50px;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+                color: #ffd700;
+            }
+
+            .business-name {
+                font-size: 2rem;
+                font-weight: bold;
+            }
+
+            nav {
+                display: flex;
+                gap: 2rem;
+            }
+
+            nav a {
+                color: white;
+                text-decoration: none;
+                padding: 0.5rem 1rem;
+                border-radius: 4px;
+            }
+
+            nav a:hover {
+                color: #ffd700;
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            nav a.active {
+                color: #ffd700;
+                border-bottom: 2px solid #ffd700;
+            }
+
+            /* HERO */
+            .home {
+                height: 80vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                background-image: url("./solar-panels-1.webp");
+                background-size: cover;
+                background-position: center;
+                position: relative;
+                color: white;
+            }
+
+            .home::after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.4);
+                top: 0;
+                left: 0;
+            }
+
+            .home-content {
+                position: relative;
+                z-index: 1;
+            }
+
+            .home h1 {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+            }
+
+            .home p {
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .button-group {
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            /* Primary (main CTA) */
+            .primary-btn {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+                background: linear-gradient(135deg, #ffd700, #ffcc00);
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                color: #1a472a;
+                font-weight: bold;
+                transition: all 0.25s ease;
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            }
+
+            .primary-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            }
+
+            /* Secondary button */
+            .secondary-btn {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+                background: transparent;
+                border: 2px solid #ffffff;
+                border-radius: 10px;
+                cursor: pointer;
+                color: white;
+                font-weight: bold;
+                transition: all 0.25s ease;
+            }
+
+            .secondary-btn:hover {
+                background: rgba(255, 255, 255, 0.15);
+                transform: translateY(-2px);
+            }
+
+            /* ARTICLES */
+            .articles {
+                padding: 3rem 2rem;
+                max-width: 1200px;
+                margin: auto;
+            }
+
+            .articles h2 {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+
+            .article-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 2rem;
+            }
+
+            .article {
+                background: white;
+                border-radius: 12px;
+                padding: 1.5rem;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .article h3 {
+                margin-top: 0;
+                color: #1a472a;
+            }
+
+            .article p {
+                color: #555;
+            }
+
+            .article a {
+                display: inline-block;
+                margin-top: 1rem;
+                color: #2d6a4f;
+                font-weight: bold;
+                text-decoration: none;
+            }
+
+            .article a:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <div class="logo-section">
+                <div class="logo">☀️</div>
+                <div class="business-name">Sunnies</div>
+            </div>
+
+            <nav>
+                <a href="index.html" class="active">Home</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="quote.html">Get Quote</a>
+                <a href="#">Contact</a>
+            </nav>
+        </header>
+
+        <!-- HERO -->
+        <section class="home">
+            <div class="home-content">
+                <h1>Start Saving on Your Energy Bill Today</h1>
+                <p>See how much you can save with solar in just 30 seconds.</p>
+
+                <div class="button-group">
+                    <button class="secondary-btn" onclick="location.href = '#'">
+                        Get a Quote
+                    </button>
+
+                    <button
+                        class="primary-btn"
+                        onclick="location.href = 'quote.html'"
+                    >
+                        Instant Online Quote
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ARTICLES -->
+        <section class="articles">
+            <h2>Why Go Solar?</h2>
+
+            <div class="article-grid">
+                <div class="article">
+                    <h3>Save Money</h3>
+                    <p>
+                        Reduce your energy bills significantly by switching to
+                        solar power.
+                    </p>
+                    <a href="#">Read more →</a>
+                </div>
+
+                <div class="article">
+                    <h3>Eco Friendly</h3>
+                    <p>
+                        Solar energy helps reduce your carbon footprint and
+                        protects the environment.
+                    </p>
+                    <a href="#">Read more →</a>
+                </div>
+
+                <div class="article">
+                    <h3>Increase Home Value</h3>
+                    <p>
+                        Homes with solar panels are more attractive and valuable
+                        to buyers.
+                    </p>
+                    <a href="#">Read more →</a>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

@@ -64,7 +64,7 @@ export default function Home() {
                                         alignItems: "center",
                                     }}
                                 >
-                                    <Link href="/widget">
+                                    <Link href="/example/quote.html">
                                         <button className="btn btn--primary">
                                             try SolarIQ
                                         </button>
@@ -119,7 +119,7 @@ export default function Home() {
                                 site&#39;s homepage in the way you would like.
                             </p>
                         </div>
-                        <Link href="/widget">
+                        <Link href="/example/index.html">
                             <button className="btn btn--primary">
                                 see an example
                             </button>
