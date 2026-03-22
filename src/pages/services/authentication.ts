@@ -7,7 +7,7 @@ interface DecodedToken {
     exp: number;
 }
 
-export function verifyAuth(req: { headers: { cookie?: string } }) {
+export default function verifyAuth(req: { headers: { cookie?: string } }) {
     const cookies = cookie.parse(req.headers.cookie || "");
     const token = cookies.auth;
 
@@ -18,7 +18,7 @@ export function verifyAuth(req: { headers: { cookie?: string } }) {
     try {
         const decoded = jwt.verify(
             token,
-            process.env.JWT_SECRET!
+            process.env.JWT_SECRET!,
         ) as DecodedToken;
         return decoded;
     } catch {
