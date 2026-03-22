@@ -6,6 +6,10 @@
     --foreground-rgb: 0, 0, 0; /* black text */
     --background-start-rgb: 255, 255, 255; /* white background */
     --background-end-rgb: 255, 255, 255;
+    /* unified surface/white color used across the site */
+    --surface-rgb: 255, 255, 255;
+    /* card background (slightly different from page background) */
+    --card-bg-rgb: 250, 250, 250;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,6 +17,7 @@
         --foreground-rgb: 255, 255, 255;
         --background-start-rgb: 15, 15, 15;
         --background-end-rgb: 15, 15, 15;
+        --card-bg-rgb: 30, 30, 30;
     }
 }
 
@@ -20,4 +25,233 @@ body {
     color: rgb(var(--foreground-rgb));
     background: rgb(var(--background-start-rgb));
     padding: 1rem;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-bottom: 1px solid #eee;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon {
+    font-size: 24px;
+}
+
+/* base button */
+.btn {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+
+    padding: 80px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.heroText {
+    font-size: 18px;
+    color: #555;
+}
+
+/* SECTION */
+.section {
+    display: block;
+    padding: 60px 20px;
+}
+
+.article {
+    max-width: 900px;
+    margin: 32px auto 0 auto;
+    width: 100%;
+    display: block;
+}
+
+.paragraph {
+    /* max-width: 500px; */
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    /* use card background variable so the card is slightly lighter than page */
+    background: rgb(var(--card-bg-rgb));
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    color: rgb(var(--foreground-rgb));
+}
+
+.paragraph.fullWidth {
+    /* make this block span the full row (both columns) inside .section
+       Keep the same visual width as the text column + gap + image so
+       its left/right borders align with the text column and image. */
+    flex-basis: 100%;
+    /* textBlock max-width (500) + gap (40) + image width (400) = 940 */
+    max-width: 940px;
+    width: 940px;
+    margin: 24px auto 0 auto;
+}
+
+.paragraph.splitCard {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /* make the outer container transparent so only cardInner shows the grey card */
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    /* keep content vertically aligned and let cardInner take most width */
+}
+
+.paragraph.splitCard .cardInner {
+    background: rgb(var(--card-bg-rgb));
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    color: rgb(var(--foreground-rgb));
+    flex: 1 1 auto;
+}
+
+.paragraph.splitCard .buttonWrap {
+    flex: 0 0 auto;
+}
+
+.halfRow {
+    flex-basis: 100%;
+    display: flex;
+    gap: 16px; /* reduce gap so text block sits closer to image */
+    align-items: center;
+    max-width: 940px;
+    margin: 24px auto 0 auto;
+}
+
+.halfRow .halfImage {
+    /* give image slightly less than half so text can expand */
+    flex: 0 0 48%;
+}
+
+.halfRow .halfText {
+    flex: 1 1 52%;
+}
+
+.halfRow .halfText .paragraph {
+    margin: 0; /* prevent extra top margin */
+}
+
+.halfImageBg {
+    width: 100%;
+    height: 300px;
+    background-image: url("/sunshine_mills_inc_cover.jpeg");
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+/* Ensure the heading inside the white card is visible and matches the original look */
+.paragraph h3 {
+    color: rgb(var(--surface-rgb)); /* unify heading white */
+    margin-top: 0;
+}
+
+.paragraph {
+    color: #555;
+}
+
+.btn--primary {
+    background: linear-gradient(90deg, #f4b400, #ff8f00);
+    color: rgb(var(--surface-rgb));
+}
+
+.btn--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.textColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.textWithButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.textWithButton .paragraph {
+    flex: 1 1 60%;
+    margin: 0;
+}
+
+.textWithButton .btn {
+    flex: 0 0 auto;
+}
+
+.textCta {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+.ctaNote {
+    font-size: 12px;
+    /* theme-aware grey: uses foreground color with reduced opacity for readable contrast */
+    color: rgba(var(--foreground-rgb), 0.65);
+    margin-top: 0;
+    align-self: center;
+}
+
+/* IMAGE */
+.image {
+    width: 400px;
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #eee;
+    color: #777;
+}
+
+.footerContact {
+    margin: 6px 0 0 0;
+    font-size: 13px;
+    color: rgba(var(--foreground-rgb), 0.75);
+}
+
+.footerContact a {
+    color: inherit;
+    text-decoration: underline;
 }
