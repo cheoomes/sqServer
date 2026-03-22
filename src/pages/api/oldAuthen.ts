@@ -2,11 +2,11 @@ import { NextApiRequest, NextApiResponse } from "next";
 //needs to be like this?
 import * as cookie from "cookie";
 import jwt from "jsonwebtoken";
-import { prisma } from "../../../lib/prisma";
+import { prisma } from "../../lib/prisma";
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse
+    res: NextApiResponse,
 ) {
     const cookies = cookie.parse(req.headers.cookie || "");
     const token = cookies.auth;
