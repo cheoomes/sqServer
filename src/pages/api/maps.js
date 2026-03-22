@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import rateLimit from "express-rate-limit";
+//port rateLimit from "express-rate-limit";
 import fetch from "node-fetch";
 
 const MAPS_API_URL = "https://maps.googleapis.com/maps/api";
@@ -22,7 +22,7 @@ const handler = async (req, res) => {
 
     // Log the request
     console.log(
-        `User requested ${endpoint} with params: ${JSON.stringify(params)}`
+        `User requested ${endpoint} with params: ${JSON.stringify(params)}`,
     );
 
     try {
