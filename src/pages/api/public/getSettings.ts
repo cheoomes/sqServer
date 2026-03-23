@@ -3,10 +3,10 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse
+    res: NextApiResponse,
 ) {
     // CORS headers
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3001");
+    res.setHeader("Access-Control-Allow-Origin", "https://widget.solariq.app/");
     res.setHeader("Access-Control-Allow-Methods", "PUT, OPTIONS");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type, x-api-key");
 
