@@ -7,12 +7,17 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 const performanceRatio = 0.8;
 
+const allowedOrigins = ["https://widget.solariq.app", "https://solariq.app"];
+
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse,
 ) {
     // CORS headers
-    res.setHeader("Access-Control-Allow-Origin", "https://widget.solariq.app/");
+    const origin = req.headers.origin;
+    if (origin && allowedOrigins.includes(origin)) {
+        res.setHeader("Access-Control-Allow-Origin", origin);
+    }
     res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
