@@ -20,7 +20,9 @@ export default function Home() {
 
             {/* HERO */}
             <section className="hero">
-                <h2>turn more website visitors into leads</h2>
+                <h2 className="heroTitle">
+                    turn more website visitors into leads
+                </h2>
                 <p className="heroText">
                     SolarIQ helps solar PV installers convert more website
                     traffic into qualified leads by giving visitors an instant,

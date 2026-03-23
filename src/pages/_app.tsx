@@ -1,7 +1,17 @@
 import "../media/global.css";
 import "../media/login.css";
 import type { AppProps } from "next/app";
+import Head from "next/head";
 
-export default function MyApp({ Component, pageProps }: AppProps) {
-    return <Component {...pageProps} />;
+function MyApp({ Component, pageProps }: AppProps) {
+    return (
+        <>
+            <Head>
+                <title>SolarIQ</title>
+            </Head>
+            <Component {...pageProps} />
+        </>
+    );
 }
+
+export default MyApp;
