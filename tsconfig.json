@@ -40,7 +40,7 @@
     "src/app/page.js",
     "src/app/page.js",
     "src/app/server.js"
-  ],
+, "prisma.config.js"  ],
   "exclude": [
     "node_modules"
   ]
