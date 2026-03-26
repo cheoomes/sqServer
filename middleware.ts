@@ -1,10 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 
-const allowedOrigins = [
-    "http://localhost:3001",
-    "https://solariq.app",
-    "https://widget.solariq.app",
-];
+const allowedOrigins = ["http://localhost:3001", "https://widget.solariq.app"];
 const corsOptions = {
     "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
