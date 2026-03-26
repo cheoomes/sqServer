@@ -103,6 +103,9 @@ export default function Home() {
                         using their average daily energy use, local solar
                         irradiance information from NASA’s API, and an assumed
                         80% system efficiency.
+                        <br />
+                        if you are able to give a estimate price based on the
+                        system size, this can be added to the quote as well.
                     </p>
                 </div>
 
@@ -118,12 +121,13 @@ export default function Home() {
                             <h2>how will visitors find SolarIQ on my site?</h2>
                             <p className="paragraph">
                                 we will add a button or section to your
-                                site&#39;s homepage in the way you would like.
+                                site&#39;s homepage in the way you would like,
+                                so your visitors easily come across it.
                             </p>
                         </div>
                         <Link href="/example/index.html">
                             <button className="btn btn--primary">
-                                see an example
+                                see what this could look like
                             </button>
                         </Link>
                     </div>
@@ -141,7 +145,8 @@ export default function Home() {
                             <p className="paragraph">
                                 as soon as a visitor submits their information
                                 through SolarIQ, the lead is instantly added to
-                                your google sheet.
+                                a google sheet you have access to (shortly there
+                                will also be a dashboard for easier management).
                             </p>
                         </div>
                         <Image
