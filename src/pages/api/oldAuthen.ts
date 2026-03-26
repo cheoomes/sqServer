@@ -24,7 +24,7 @@ export default async function handler(
             const client = await prisma.client.findUnique({
                 where: { id: decoded.id },
                 select: {
-                    logoUrl: true,
+                    logo: true,
                     backgroundColor: true,
                     progresColor: true,
                     progresShadowColor: true,
